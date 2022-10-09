@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/css/materialize.min.css">
 <link type="text/css" rel="stylesheet" href="assets/my_style.css"  media="screen"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/js/materialize.min.js"></script>
 <title>PasswordPusher</title>
 </head>
 <body>
-<main>
-  <div class="row"><div class="col s12">
-      <!-- CARD START -->
-      <div id="card4" class="card branded">
-        <div class="card-content">
-          <span class="card-title center">New</span>
-          <!-- START FORM -->
-          <div class="row full">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">create</i>
-              <textarea rows="10" id="contentValue" class="materialize-textarea"></textarea>
-              <label style="padding-left: 5px" for="contentValue">Content</label>
-            </div>
-          </div>
-          <!-- END FORM -->
-        <div class="row">
-          <button class="btn waves-effect col s12" id='submit'>Submit<i class="material-icons right">send</i></button>
-          </div>
+  <nav role="navigation" class="light-blue lighten-1">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo">Logo</a>
+    </div>
+  </nav>
+  <div class="section">
+    <div class="container">
+      <br><br>
+      <h1 class="header center-align">Starter Template</h1>
+      <div class="row center-align">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">create</i>
+          <textarea rows="10" id="contentValue" class="materialize-textarea"></textarea>
+          <label style="padding-left: 5px" for="contentValue">Content</label>
         </div>
       </div>
-      <!-- CARD END -->
-    </div></div>
+      <div class="row center-align">
+        <button class="btn waves-effect col s12" id='submit'>Submit<i class="material-icons right">send</i></button>
+        </div>
+      <br><br>
+    </div>
+  </div>
 <!-- FOOTER -->
 <a class="modal-trigger" href="#modal1"><p id="mani-ver-num">v0.0.0</p></a>
 <!-- ABOUT POPUP START -->
 <div id="modal1" class="modal" style="width:90%;">
   <div class="modal-content">
-    <h5 id="about-mani-ver">About <sup>(v0.0.0)</sup></h5>
+    <h5 id="about-mani-ver">About <sup>(v0.1.0)</sup></h5>
     <div class="row">
       <div class="col s12">
-        <p class="no-margin">A web extension available for all chromium based browsers (Google Chrome, Microsoft Edge)</p>
+        <p class="no-margin">A brand-able proxy using PasswordPusher JSON API.</p>
       </div>
       <div class="divider"></div>     
       <div class="col s12 valign-wrapper">
@@ -61,6 +57,13 @@
           </thead>
           <tbody>
             <tr>
+              <td>0.1.0</td>
+              <td></td>
+              <td><strong>09/Oct/2022</strong><br />
+                Tidy Layout and Improve Usability.
+              </td>
+            </tr>
+            <tr>
               <td>0.0.1</td>
               <td></td>
               <td><strong>04/Oct/2022</strong><br />
@@ -73,7 +76,8 @@
   <div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div>
 </div>
 <!-- ABOUT POPUP END -->
-</main>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/js/materialize.min.js"></script>
 <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
