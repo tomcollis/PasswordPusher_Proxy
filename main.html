@@ -6,34 +6,36 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/css/materialize.min.css">
 <link type="text/css" rel="stylesheet" href="assets/my_style.css"  media="screen"/>
 <title>Password Pusher</title>
+<style>
+  :root {
+    --button-text: #FFFFFF;
+    --button-background: #000000;
+    --body-text: #202036;
+    --body-background: #202036;
+    --container-background: #FFFFFF
+  }
+  </style>
 </head>
 <body>
-  <nav role="navigation" class="light-blue lighten-1">
-    <div class="nav-wrapper container">
-      <a href="#" class="brand-logo">Logo</a>
-    </div>
-  </nav>
   <div class="section">
-    <div class="container">
-      <br><br>
-      <h1 class="header center-align">Starter Template</h1>
+    <div class="container center-align">
+      <img class="responsive-img" src="https://via.placeholder.com/700x200.png" id="header-image" alt="Logo">
       <div class="row center-align">
         <div class="input-field col s12">
           <i class="material-icons prefix">create</i>
-          <textarea rows="10" id="contentValue" class="materialize-textarea"></textarea>
-          <label style="padding-left: 5px" for="contentValue">Content</label>
+          <textarea id="contentValue" style="height: 100px;" class="materialize-textarea"></textarea>
+          <label style="padding-left: 5px" for="contentValue">Enter the Password (or text) to be Shared</label>
         </div>
       </div>
       <div class="row center-align">
         <button class="btn waves-effect col s12" id='submit'>Submit<i class="material-icons right">send</i></button>
-        </div>
-      <br><br>
+      </div>
+      <!-- FOOTER -->
+      <a class="modal-trigger" href="#modal1"><p id="mani-ver-num">v0.0.0</p></a>
     </div>
   </div>
-<!-- FOOTER -->
-<a class="modal-trigger" href="#modal1"><p id="mani-ver-num">v0.0.0</p></a>
 <!-- ABOUT POPUP START -->
-<div id="modal1" class="modal" style="width:90%;">
+<div id="modal1" class="modal" style="max-width: 500px; width:90%;">
   <div class="modal-content">
     <h5 id="about-mani-ver">About <sup>(v0.1.0)</sup></h5>
     <div class="row">

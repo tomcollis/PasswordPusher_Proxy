@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems);
   });
+  document.getElementById('header-image').addEventListener('click', function() {
+  M.toast({
+    displayLength: 15000,
+    text: 'I am a toast!'})
+  });
 // Function - Submit Ticket
 function submitPWP() {
   // Variables
@@ -21,26 +26,23 @@ function submitPWP() {
       let apiUrl = 'https://pwpush.com/p.json';
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-      
       var urlencoded = new URLSearchParams();
       urlencoded.append("password[payload]", tContents);
       urlencoded.append("password[expire_after_days]", myExpiryDays);
       urlencoded.append("password[expire_after_views]", myExpiryViews);
       urlencoded.append("password[deletable_by_viewer]", "true");
       urlencoded.append("password[retrieval_step]", "true");
-      
       var requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: urlencoded,
         redirect: 'follow'
       };
-      
        fetch(apiUrl, requestOptions).then(response => response.json())
          .then(result => {
           console.log(result.url_token)
+          M.toast({displayLength: 15000, text: 'The link is '+brandedUrl+result.url_token})
         }).catch(error => console.log('error', error));
-
 };
 // Wait for Click - Submit
   // Create Variables
