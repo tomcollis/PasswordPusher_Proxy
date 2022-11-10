@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/css/materialize.min.css">
+<title>Password Pusher</title>
+<style>
+  :root {
+    --button-text: #FFFFFF;
+    --button-background: #000000;
+    --body-text: #000000;
+    --body-background: #000000;
+    --container-background: #FFFFFF
+  }
+  html, button, input, optgroup, select, textarea {
+    font-family: Arial, sans-serif;
+  }  
+  html, body {
+    background-color: var(--body-background);
+    font-size: 14px;
+    margin: 0;
+    min-height: 380px;
+    padding: 0;
+    color: var(--body-text);
+  }
+  .container {
+    border: 1px solid #000000;
+    border-radius: 25px;
+    padding: 20px 25px 20px;
+    background-color: var(--container-background);
+  }
+  #mani-ver-num {
+  margin: 0;
+  padding: 0 0 2px 4px;
+  font-size:10px;
+  color: #ddd;
+  }
+  .btn {
+    background-color: var(--button-background);
+    color: var(--button-text);
+  }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <div class="container center-align">
+      <!-- LOGO --><img class="responsive-img" src="https://via.placeholder.com/700x200.png" id="header-image" alt="Logo">
+      <!-- SUBMIT PASSWORD START -->
+      <div id="submitSecret" class="row center-align">
+        <span class="col s1"></span>
+        <div class="input-field col s10">
+          <i class="material-icons prefix">create</i>
+          <textarea id="contentValue" style="height: 100px;" class="materialize-textarea"></textarea>
+          <label style="padding-left: 5px" for="contentValue">Enter the Password (or text) to be Shared</label>
+        </div>
+        <span class="col s1"></span>
+        <button class="btn waves-effect col s12" id='submit'>Submit<i class="material-icons right">send</i></button>
+      </div>
+      <!-- SUBMIT PASSWORD END -->
+      <!-- SUBMITTED START -->
+      <div id="resultURL" style="display: none;" row center-align">
+        <span class="col s2"></span>
+        <div class="input-field col s8">
+          <input style="text-align: center;" id="urlValue">
+        </div>
+        <span class="col s2"></span>
+        <button class="btn waves-effect col s9" id='copyClipboard'>Copy to Clipboard<i class="material-icons right">content_copy</i></button>
+        <span class="col s1"></span>
+        <button class="btn waves-effect col s2" id='reset'>Reset<i class="material-icons left">refresh</i></button>
+      </div>
+      <!-- SUBMITTED START -->
+      <!-- RETRIEVAL START -->
+      <div id="retrieveSecret" style="display: none;" class="row center-align">
+        <span class="col s2"></span>
+        <div class="input-field col s8">
+          <textarea id="retrievedValue" style="height: 100px; text-align: center;" class="materialize-textarea"></textarea>
+        </div>
+        <span class="col s2"></span>
+        <button class="btn waves-effect col s12" onclick="redirectToSecret()">Click to retrieve</button>
+      </div>
+      <!-- RETRIEVAL END -->
+      <!-- FOOTER -->
+      <a class="modal-trigger" href="#modal1"><p id="mani-ver-num">v0.4.0</p></a>
+    </div>
+  </div>
+<!-- ABOUT POPUP START -->
+<div id="modal1" class="modal" style="max-width: 500px; width:90%;">
+  <div class="modal-content">
+    <h5 id="about-mani-ver">About <sup>(v0.4.0)</sup></h5>
+    <div class="row">
+      <div class="col s12">
+        <p class="no-margin">A brand-able proxy using <a href="https://pwpush.com/api" target="_blank">PasswordPusher JSON API</a>.</p>
+      </div>
+      <div class="divider"></div>     
+      <div class="col s12 valign-wrapper">
+        <p>Created with <a title="A modern responsive front-end framework based on Material Design" href="https://materializecss.github.io/" target="_blank">Materialize CSS</a> and <a href="https://jquery.com/" target="_blank">jQuery</a></p>
+      </div>
+    </div>
+    </div>
+    <div class="modal-content" style="padding:0 8px 0;">
+        <table>
+          <thead>
+            <tr>
+                <th></th>
+                <th width="5px"></th>
+                <th>Change Log</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1.0.0</td>
+              <td></td>
+              <td><strong>10/Nov/2022</strong><br />
+                Working retrieval including additional step and redirection.
+              </td>
+            </tr>
+            <tr>
+              <td>0.4.0</td>
+              <td></td>
+              <td><strong>10/Nov/2022</strong><br />
+                Working Submission and Copy link to clipboard.
+              </td>
+            </tr>
+            <tr>
+              <td>0.1.0</td>
+              <td></td>
+              <td><strong>09/Oct/2022</strong><br />
+                Tidy Layout and Improve Usability.
+              </td>
+            </tr>
+            <tr>
+              <td>0.0.1</td>
+              <td></td>
+              <td><strong>04/Oct/2022</strong><br />
+                Initial Version.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+  <div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div>
+</div>
+<!-- ABOUT POPUP END -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/js/materialize.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>

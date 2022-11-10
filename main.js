@@ -1,3 +1,12 @@
+// Variables
+  let myExpiryDays = "1";
+  let myExpiryViews = "3";
+  let choiceDeletable = "true";
+  let enableAddStep = "true";
+  let brandedUrl = "https://pwpush-proxy.pages.dev?token=";
+// Get URL Parameters
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
 // Initialise Materialize
 document.addEventListener('DOMContentLoaded', function() {
     // Modal Popup
@@ -7,42 +16,58 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems);
   });
-  document.getElementById('header-image').addEventListener('click', function() {
-  M.toast({
-    displayLength: 15000,
-    text: 'I am a toast!'})
-  });
+// Hide Container for Response
+$(document).ready(function(){
+  $('#resultURL').hide();
+  $('#retrieveSecret').hide();
+  if (urlParams.has('token')){
+    if (enableAddStep === "true"){
+      // Show retrieval message
+      $('#submitSecret').hide();
+      $('#retrieveSecret').show();
+      document.getElementById('retrievedValue').value = urlParams.get('token');
+    } else {
+      // Immediately Redirect
+      fullUrl = brandedUrl + urlParams.get('token');
+      window.location.href = fullUrl;
+    }
+  }
+});
+// Function - Retrieval Step
+function redirectToSecret() {
+  // Immediately Redirect
+  fullUrl = brandedUrl + urlParams.get('token');
+  window.location.href = fullUrl;
+}
 // Function - Submit Ticket
 function submitPWP() {
-  // Variables
-  let myExpiryDays = "1";
-  let myExpiryViews = "3";
-  let brandedUrl = "https://pwpush.com/en/p/";
   // Get Form Values
-  tContents = document.getElementById('contentValue').value;
+  scrtValue = document.getElementById('contentValue').value;
   // Create Body
-  console.log(tContents);
+  let apiUrl = 'https://pwpush.com/p.json';
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+  var urlencoded = new URLSearchParams();
+  urlencoded.append("password[payload]", scrtValue);
+  urlencoded.append("password[expire_after_days]", myExpiryDays);
+  urlencoded.append("password[expire_after_views]", myExpiryViews);
+  urlencoded.append("password[deletable_by_viewer]", choiceDeletable);
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: urlencoded,
+    redirect: 'follow'
+  };
   // Send Data
-      let apiUrl = 'https://pwpush.com/p.json';
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-      var urlencoded = new URLSearchParams();
-      urlencoded.append("password[payload]", tContents);
-      urlencoded.append("password[expire_after_days]", myExpiryDays);
-      urlencoded.append("password[expire_after_views]", myExpiryViews);
-      urlencoded.append("password[deletable_by_viewer]", "true");
-      urlencoded.append("password[retrieval_step]", "true");
-      var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: urlencoded,
-        redirect: 'follow'
-      };
-       fetch(apiUrl, requestOptions).then(response => response.json())
-         .then(result => {
-          console.log(result.url_token)
-          M.toast({displayLength: 15000, text: 'The link is '+brandedUrl+result.url_token})
-        }).catch(error => console.log('error', error));
+  fetch(apiUrl, requestOptions).then(response => response.json())
+    .then(result => {
+    $('#submitSecret').hide();
+    $('#resultURL').show();
+    // Clear Previous Secret
+    document.getElementById('contentValue').value = "";
+    // Set URL to Text Box
+    document.getElementById('urlValue').value = brandedUrl+result.url_token;
+  }).catch(error => console.log('error', error));
 };
 // Wait for Click - Submit
   // Create Variables
@@ -61,4 +86,22 @@ document.getElementById('submit').addEventListener('click', function() {
       },500);
   }
   lastClickTime = thisClickTime;
+});
+// Button - Copy to Clipboard
+document.getElementById('copyClipboard').addEventListener('click', function() {
+  // Get the text field
+  var copyText = document.getElementById("urlValue");
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+  // Alert the copied text
+  alert("Copied the text: " + copyText.value);
+});
+// Button - Reset Form
+document.getElementById('reset').addEventListener('click', function() {
+  $('#submitSecret').show();
+  $('#resultURL').hide();
+  $('#retrieveSecret').hide();
 });
