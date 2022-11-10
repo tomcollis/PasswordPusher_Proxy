@@ -4,6 +4,7 @@
   let choiceDeletable = "true";
   let enableAddStep = "true";
   let brandedUrl = "https://pwpush-proxy.pages.dev?token=";
+  let pwpushServer = "https://pwpush.com/en/p/";
 // Get URL Parameters
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -28,7 +29,7 @@ $(document).ready(function(){
       document.getElementById('retrievedValue').value = urlParams.get('token');
     } else {
       // Immediately Redirect
-      fullUrl = brandedUrl + urlParams.get('token');
+      fullUrl = pwpushServer + urlParams.get('token');
       window.location.href = fullUrl;
     }
   }
@@ -36,7 +37,7 @@ $(document).ready(function(){
 // Function - Retrieval Step
 function redirectToSecret() {
   // Immediately Redirect
-  fullUrl = brandedUrl + urlParams.get('token');
+  fullUrl = pwpushServer + urlParams.get('token');
   window.location.href = fullUrl;
 }
 // Function - Submit Ticket
