@@ -3,7 +3,7 @@
   let myExpiryViews = "3";
   let choiceDeletable = "true";
   let enableAddStep = "true";
-  let brandedUrl = "https://pwpush-proxy.pages.dev?token=";
+  let brandedUrl = "https://passwordpusher-proxy.pages.dev?token=";
   let pwpushServer = "https://pwpush.com/en/p/";
 // Get URL Parameters
 const queryString = window.location.search;
